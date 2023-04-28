@@ -3,11 +3,14 @@ class frontSite
 {
     function getQuestion($boss, $id)
     {
-        function checkIfAnswered($boss, $id)
+        function checkIfAnswered($boss, $id, $user)
         {
             require 'connect.php';
 
-            $query = "SELECT questions.question_number AS qnumber, questions.boss AS qboss, userinput.boss AS uboss, userinput. question_id AS unumber FROM questions, userinput WHERE questions.question_number = '$id' AND questions.boss = '$boss' AND questions.question_number = userinput.question_id AND questions.boss = userinput.boss";
+            $boss = basename(getcwd());
+            $user = $_SESSION['character'];
+            $id = $_GET['step'];
+            $query = "SELECT * FROM questions, userinput WHERE questions.question_number = '$id' AND questions.boss = '$boss' AND userinput.boss = questions.boss AND userinput.question_id = questions.question_number AND userinput.name = '$user'";
             if ($result = $connection->query($query)) {
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_array()) {
@@ -24,8 +27,8 @@ class frontSite
         if ($result = $connection->query($query)) {
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_array()) {
-                    checkIfAnswered($boss, $id);
-                    ?>
+                    checkIfAnswered($boss, $id, $user);
+?>
                     <div class="number">(<?= $_GET['step'] ?> of 400)</div>
                     <div class="quest"><?= $row['question'] ?></div>
                     <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
@@ -61,7 +64,7 @@ class frontSite
                 while ($row = $result->fetch_array()) {
                 ?>
                     <div class="quest">
-                        <p class="small">Question <?= $row['question_id'] ?>: <?=$row['question'] ?></p>
+                        <p class="small">Question <?= $row['question_id'] ?>: <?= $row['question'] ?></p>
                         <p>Answer: <?= $row['answer'] ?> <br> <b>(CORRECT: <?= $row['correct'] ?>)</b></p>
                         <?php
                         if ($row['answer'] == $row['correct']) {

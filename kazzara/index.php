@@ -55,6 +55,22 @@ session_start(); /* Starts the session */
         <?php $front->sendAnswer(); ?>
         <div class="question ml-sm-5 pl-sm-5 pt-2">
             <form action="" method="POST" enctype="multipart/form-data" class="col-lg-12">
+                <?php
+                /*
+                $boss = basename(getcwd());
+                $user = $_SESSION['character'];
+                $id = $_GET['step'];
+                $query = "SELECT * FROM questions, userinput WHERE questions.question_number = '$id' AND questions.boss = '$boss' AND userinput.boss = questions.boss AND userinput.question_id = questions.question_number AND userinput.name = '$user'";
+                if ($result = $connection->query($query)) {
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_array()) {
+                            header("Location: ../result/?player=" . $_SESSION['character'] . "&boss=" . basename(getcwd()));
+                            die();
+                        }
+                    }
+                }
+                */
+                ?>
                 <?php $front->getQuestion('kazzara', $_GET['step']) ?>
                 <input type="hidden" class="form-control" name="question_id" value="<?= $_GET['step'] ?>">
                 <input type="hidden" class="form-control" name="character" value="<?= $_SESSION['character'] ?>">
