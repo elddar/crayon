@@ -1,4 +1,7 @@
 <?php
+/*
+SELECT * FROM questions WHERE question_number NOT IN (SELECT question_id FROM userinput WHERE user_id = '$user_id')
+*/
 class frontSite
 {
     function getQuestion($boss, $id)
@@ -76,9 +79,22 @@ class frontSite
                     </div>
 <?php
                 }
-                echo '<p><a href="../">Click here to go back</a></p>';
             }
         }
+        $query = "SELECT * FROM questions WHERE boss = '$boss' AND question_number NOT IN (SELECT question_id FROM userinput WHERE userinput.name = '$name')";
+        if ($result = $connection->query($query)) {
+            if ($result->num_rows > 0) {
+                echo "<p class='border-bottom p-2 bozo'><b>You didn't answer these questions, BOZO!</b><br><span class='ml-4'>Click on them!</span></p>";
+                while ($row = $result->fetch_array()) {
+                ?>
+                    <div class="quest">
+                        <a href="../<?=$_GET['boss'] ?>?step=<?=$row['question_number'] ?>"><p class="small">Q: <?= $row['question'] ?></a>
+                    </div>
+<?php
+                }
+            }
+        }
+        echo '<h4 class="py-2 ml-4 back"><a href="../">Click here to go back</a></h4>';
     }
     function sendAnswer()
     {
