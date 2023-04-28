@@ -7,11 +7,20 @@ session_start(); /* Starts the session */
 <html lang="en">
 
 <head>
+    <title>Crayon Factory</title>
+
+    <link rel="apple-touch-icon" sizes="76x76" href="../icon/pple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../icon/favicon-16x16.png">
+    <link rel="manifest" href="../icon/site.webmanifest">
+    <link rel="mask-icon" href="../icon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="../style.css">
-    <title>Crayon Factory</title>
 </head>
 
 <?php require '../inc/functions.php'; ?>
@@ -29,9 +38,9 @@ session_start(); /* Starts the session */
     <div class="container">
         <div class="question ml-sm-5 pl-sm-5 pt-2">
             <?php
-            if(isset($_GET['boss']) && isset($_GET['player'])){
+            if (isset($_GET['boss']) && isset($_GET['player'])) {
                 $front->showAnswers($_GET['player'], $_GET['boss']);
-            }else{
+            } else {
                 header("Location: ../");
             }
             ?>

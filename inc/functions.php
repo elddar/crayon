@@ -3,6 +3,20 @@ class frontSite
 {
     function getQuestion($boss, $id)
     {
+        function checkIfAnswered($boss, $id)
+        {
+            require 'connect.php';
+
+            $query = "SELECT questions.question_number AS qnumber, questions.boss AS qboss, userinput.boss AS uboss, userinput. question_id AS unumber FROM questions, userinput WHERE questions.question_number = '$id' AND questions.boss = '$boss' AND questions.question_number = userinput.question_id AND questions.boss = userinput.boss";
+            if ($result = $connection->query($query)) {
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_array()) {
+                        header("Location: ../result/?player=" . $_SESSION['character'] . "&boss=" . basename(getcwd()));
+                        die();
+                    }
+                }
+            }
+        }
         require 'connect.php';
 
         $query = "SELECT * FROM questions WHERE question_number = '$id' AND boss = '$boss'";
@@ -10,7 +24,8 @@ class frontSite
         if ($result = $connection->query($query)) {
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_array()) {
-?>
+                    checkIfAnswered($boss, $id);
+                    ?>
                     <div class="number">(<?= $_GET['step'] ?> of 400)</div>
                     <div class="quest"><?= $row['question'] ?></div>
                     <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
@@ -36,28 +51,29 @@ class frontSite
             }
         }
     }
-    function showAnswers($name, $boss)
+    function showAnswers($name, $boss) /* show results */
     {
         require 'connect.php';
 
-        $query = "SELECT userinput.question_id AS question_id, userinput.answer AS answer, questions.correct AS correct FROM userinput, questions WHERE userinput.boss = '$boss' AND name = '$name' AND questions.question_number = userinput.question_id AND questions.boss = userinput.boss";
+        $query = "SELECT questions.question, userinput.question_id AS question_id, userinput.answer AS answer, questions.correct AS correct FROM userinput, questions WHERE userinput.boss = '$boss' AND name = '$name' AND questions.question_number = userinput.question_id AND questions.boss = userinput.boss";
         if ($result = $connection->query($query)) {
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_array()) {
                 ?>
                     <div class="quest">
-                        <p class="small">Question number: <?= $row['question_id'] ?></p>
-                        <p>Answer: <?= $row['answer'] ?> <br> (CORRECT: <?=$row['correct'] ?>)</p>
+                        <p class="small">Question <?= $row['question_id'] ?>: <?=$row['question'] ?></p>
+                        <p>Answer: <?= $row['answer'] ?> <br> <b>(CORRECT: <?= $row['correct'] ?>)</b></p>
                         <?php
-                        if($row['answer'] == $row['correct']){
+                        if ($row['answer'] == $row['correct']) {
                             echo "<span class='result correct'>Good job!</span>";
-                        }else{
+                        } else {
                             echo "<span class='result incorrect'>You stupid!</span>";
                         }
                         ?>
                     </div>
 <?php
                 }
+                echo '<p><a href="../">Click here to go back</a></p>';
             }
         }
     }

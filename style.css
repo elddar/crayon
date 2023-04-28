@@ -55,6 +55,11 @@ body {
     font-size: small;
 }
 
+.question a{
+    color: inherit;
+    font-weight: bold;
+}
+
 .controls {
     border-top: 1px solid grey;
     padding-top: 6px;
