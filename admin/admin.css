@@ -1,0 +1,82 @@
+body {
+    background-color: #333;
+    color: #ddd;
+}
+
+.card {
+    border-radius: 0;
+}
+
+.btn-color {
+    background-color: #0e1c36;
+    color: #fff;
+
+}
+
+.btn-color:hover {
+    color: grey;
+}
+
+.profile-image-pic {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+}
+
+.boss {
+    background-color: #222;
+    border-color: #555;
+    border-width: 2px;
+    transition-duration: .2s;
+}
+
+.cardbody-color {
+    background-color: #555;
+}
+
+a {
+    text-decoration: none;
+}
+
+.welcome {
+    text-align: center;
+}
+
+.inactive {
+    filter: opacity(20%);
+}
+
+.active:hover {
+    filter: brightness(140%);
+}
+
+.bozo {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+}
+
+.postsuccess{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.red{
+    color: red;
+}
+
+.w3-green,
+.w3-hover-green:hover {
+    color: #fff !important;
+    background-color: #ff5100 !important
+}
+
+.w3-light-grey,
+.w3-hover-light-grey:hover,
+.w3-light-gray,
+.w3-hover-light-gray:hover {
+    color: #000 !important;
+    background-color: #f1f1f1 !important
+}

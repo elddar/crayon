@@ -116,31 +116,31 @@ session_start();
             if (isset($_SESSION['character'])) { ?>
                 <div class="col-md-12">
                     <div class="row justify-content-center">
-                        <a href="kazzara?step=1" class="p-1">
+                        <a href="kazzara" class="p-1">
                             <img data-toggle="tooltip" data-placement="top" title="KAZZARA, THE HELLFORGED" src="assets/kazzara.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss active" width="200px" alt="profile">
                         </a>
-                        <a href="amalgamation?step=1" class="p-1">
+                        <a href="amalgamation" class="p-1">
                             <img data-toggle="tooltip" data-placement="top" title="THE AMALGAMATION CHAMBER" src="assets/theamalgamationchamber.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss inactive" width="200px" alt="profile">
                         </a>
-                        <a href="experiments?step=1" class="p-1">
+                        <a href="experiments" class="p-1">
                             <img data-toggle="tooltip" data-placement="top" title="THE FORGOTTEN EXPERIMENTS" src="assets/theforgottenexperiments.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss inactive" width="200px" alt="profile">
                         </a>
-                        <a href="assault?step=1" class="p-1">
+                        <a href="assault" class="p-1">
                             <img data-toggle="tooltip" data-placement="top" title="ASSAULT OF THE ZAQALI" src="assets/assaultofthezaqali.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss inactive" width="200px" alt="profile">
                         </a>
-                        <a href="rashok?step=1" class="p-1">
+                        <a href="rashok" class="p-1">
                             <img data-toggle="tooltip" data-placement="top" title="RASHOK, THE ELDER" src="assets/rashoktheelder.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss inactive" width="200px" alt="profile">
                         </a>
-                        <a href="zskarn?step=1" class="p-1">
+                        <a href="zskarn" class="p-1">
                             <img data-toggle="tooltip" data-placement="top" title="THE VIGILANT STEWARD, ZSKARN" src="assets/thevigilantstewardzskarn.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss inactive" width="200px" alt="profile">
                         </a>
-                        <a href="magmorax?step=1" class="p-1">
+                        <a href="magmorax" class="p-1">
                             <img data-toggle="tooltip" data-placement="top" title="MAGMORAX" src="assets/magmorax.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss inactive" width="200px" alt="profile">
                         </a>
-                        <a href="neltharion?step=1" class="p-1">
+                        <a href="neltharion" class="p-1">
                             <img data-toggle="tooltip" data-placement="top" title="ECHO OF NELTHARION" src="assets/echoofneltharion.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss inactive" width="200px" alt="profile">
                         </a>
-                        <a href="sarkareth?step=1" class="p-1">
+                        <a href="sarkareth" class="p-1">
                             <img data-toggle="tooltip" data-placement="top" title="SCALECOMMANDER SARKARETH" src="assets/scalecommandersarkareth.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss inactive" width="200px" alt="profile">
                         </a>
                     </div>
