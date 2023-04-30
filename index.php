@@ -83,6 +83,7 @@ session_start();
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <div class="card my-5">
+                    <span style="background-color: grey;" class="text-center"><a style="color: black; font-size: small;" href="admin">Admin</a></span>
                     <form method="post" action="" class="card-body cardbody-color p-lg-5">
                         <div class="text-center">
                             <?php
