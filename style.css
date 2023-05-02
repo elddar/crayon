@@ -62,6 +62,10 @@ a:active {
     color: red;
 }
 
+.red{
+    color: red;
+}
+
 .container {
     background-color: #555;
     color: #ddd;
@@ -94,8 +98,25 @@ a:active {
 }
 
 .back a {
+    height: 40px;
     color: inherit;
     font-weight: bold;
+    float: right;
+}
+
+.noway{
+    font-size: 24px;
+    margin-left: 20%;
+}
+
+.outof{
+    border-top: 1px solid grey;
+    display: block;
+    width: 360px;
+}
+
+.noway img{
+    margin-top: -20px;
 }
 
 .bozo {

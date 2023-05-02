@@ -101,40 +101,6 @@ session_start(); /* Starts the session */
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
-    <?php
-    if ($_GET['step'] == "2") {
-    ?>
-        <script>
-            const radio3 = document.querySelector('input[value="I kill myself"]');
-            radio3.addEventListener('click', function() {
-                if (this.checked) {
-                    const audio = new Audio('../assets/kys.ogg');
-                    audio.play();
-                }
-            });
-        </script>
-    <?php
-    } elseif ($_GET['step'] == "1") {
-    ?>
-        <script>
-            const radio = document.querySelector('input[value="Benni"]');
-            const radio2 = document.querySelector('input[value="Aeoni"]');
-            radio.addEventListener('click', function() {
-                if (this.checked) {
-                    const audio = new Audio('../assets/scrub.ogg');
-                    audio.play();
-                }
-            });
-            radio2.addEventListener('click', function() {
-                if (this.checked) {
-                    const audio = new Audio('../assets/nodisrespect.ogg');
-                    audio.play();
-                }
-            });
-        </script>
-    <?php
-    }
-    ?>
 </body>
 
 </html>

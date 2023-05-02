@@ -51,7 +51,7 @@ $secretstuff = "Edo";
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <div class="card my-5">
-                <span style="background-color: grey;" class="text-center"><a style="color: black; font-size: small;" href="../">Back</a></span>
+                    <span style="background-color: grey;" class="text-center"><a style="color: black; font-size: small;" href="../">Back</a></span>
                     <form method="post" action="" class="card-body cardbody-color p-lg-5">
                         <div class="text-center">
                             <?php
@@ -116,7 +116,7 @@ $secretstuff = "Edo";
                                 <img data-toggle="tooltip" data-placement="top" title="ECHO OF NELTHARION" src="../assets/echoofneltharion.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss inactive" width="200px" alt="profile">
                             </a>
                             <a href="?boss=sarkareth" class="p-1">
-                                <img data-toggle="tooltip" data-placement="top" title="SCALECOMMANDER SARKARETH" src="../assets/scalecommandersarkareth.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss inactive" width="200px" alt="profile">
+                                <img data-toggle="tooltip" data-placement="top" title="SCALECOMMANDER SARKARETH" src="../assets/scalecommandersarkareth.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle  boss inactive" width="200px" alt="profile">
                             </a>
                         </div>
                     </div>
@@ -156,9 +156,40 @@ $secretstuff = "Edo";
                                     </div>
                                     <button type="submit" name="submit" class="btn btn-primary btn-block">Submit</button>
                                     <input type="text" class="invisible" id="boss" aria-describedby="boss" name="boss" value="<?= $_GET['boss'] ?>">
-                                    <input type="text" class="form-control" id="qnumber" aria-describedby="qnumber" name="qnumber" value="<?= $front->finishQuiz($_GET['boss']); ?>">
+                                    <input type="text" class="invisible" id="qnumber" aria-describedby="qnumber" name="qnumber" value="<?= $front->finishQuiz($_GET['boss']); ?>">
                                 </form>
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="row justify-content-center">
+                            <a href="?boss=kazzara" class="p-1">
+                                <img data-toggle="tooltip" data-placement="top" title="KAZZARA, THE HELLFORGED" src="../assets/kazzara.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle boss <?php if($_GET['boss'] != 'kazzara'){echo "inactive";} ?>" width="200px" alt="profile">
+                            </a>
+                            <a href="?boss=amalgamation" class="p-1">
+                                <img data-toggle="tooltip" data-placement="top" title="THE AMALGAMATION CHAMBER" src="../assets/theamalgamationchamber.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle boss <?php if($_GET['boss'] != 'amalgamation'){echo "inactive";} ?>" width="200px" alt="profile">
+                            </a>
+                            <a href="?boss=experiments" class="p-1">
+                                <img data-toggle="tooltip" data-placement="top" title="THE FORGOTTEN EXPERIMENTS" src="../assets/theforgottenexperiments.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle boss <?php if($_GET['boss'] != 'experiments'){echo "inactive";} ?>" width="200px" alt="profile">
+                            </a>
+                            <a href="?boss=assault" class="p-1">
+                                <img data-toggle="tooltip" data-placement="top" title="ASSAULT OF THE ZAQALI" src="../assets/assaultofthezaqali.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle boss <?php if($_GET['boss'] != 'assault'){echo "inactive";} ?>" width="200px" alt="profile">
+                            </a>
+                            <a href="?boss=rashok" class="p-1">
+                                <img data-toggle="tooltip" data-placement="top" title="RASHOK, THE ELDER" src="../assets/rashoktheelder.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle boss <?php if($_GET['boss'] != 'rashok'){echo "inactive";} ?>" width="200px" alt="profile">
+                            </a>
+                            <a href="?boss=zskarn" class="p-1">
+                                <img data-toggle="tooltip" data-placement="top" title="THE VIGILANT STEWARD, ZSKARN" src="../assets/thevigilantstewardzskarn.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle boss <?php if($_GET['boss'] != 'zskarn'){echo "inactive";} ?>" width="200px" alt="profile">
+                            </a>
+                            <a href="?boss=magmorax" class="p-1">
+                                <img data-toggle="tooltip" data-placement="top" title="MAGMORAX" src="../assets/magmorax.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle boss <?php if($_GET['boss'] != 'magmorax'){echo "inactive";} ?>" width="200px" alt="profile">
+                            </a>
+                            <a href="?boss=neltharion" class="p-1">
+                                <img data-toggle="tooltip" data-placement="top" title="ECHO OF NELTHARION" src="../assets/echoofneltharion.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle boss <?php if($_GET['boss'] != 'neltharion'){echo "inactive";} ?>" width="200px" alt="profile">
+                            </a>
+                            <a href="?boss=sarkareth" class="p-1">
+                                <img data-toggle="tooltip" data-placement="top" title="SCALECOMMANDER SARKARETH" src="../assets/scalecommandersarkareth.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle boss <?php if($_GET['boss'] != 'sarkareth'){echo "inactive";} ?>" width="200px" alt="profile">
+                            </a>
                         </div>
                     </div>
             <?php

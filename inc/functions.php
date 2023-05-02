@@ -42,7 +42,7 @@ class frontSite
                                 // if the current column is one of the answer columns, display its value
                                 if (($key == 'answer1' || $key == 'answer2' || $key == 'answer3' || $key == 'answer4') && (!isset($value) || $value !== '')) {
                         ?>
-                                    <label class="options"><?= $value?>
+                                    <label class="options"><?= $value ?>
                                         <input type="radio" name="radio" value="<?= $value ?>">
                                         <span class="checkmark"></span>
                                     </label>
@@ -119,6 +119,10 @@ class frontSite
         require 'connect.php';
 
         $query = "SELECT questions.question, userinput.question_id AS question_id, userinput.answer AS answer, questions.correct AS correct FROM userinput, questions WHERE userinput.boss = '$boss' AND name = '$name' AND questions.question_number = userinput.question_id AND questions.boss = userinput.boss";
+        $numberofCorrect = "SELECT questions.question, userinput.question_id AS question_id, userinput.answer AS answer, questions.correct AS correct FROM userinput, questions WHERE userinput.boss = '$boss' AND name = '$name' AND questions.question_number = userinput.question_id AND questions.boss = userinput.boss AND questions.correct = userinput.answer";
+        $numberofQuestions = "SELECT * FROM questions WHERE boss = '$boss'";
+
+        /* show answered questions */
         if ($result = $connection->query($query)) {
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_array()) {
@@ -139,6 +143,7 @@ class frontSite
                 }
             }
         }
+        /* show questions that aren't answered */
         $query = "SELECT * FROM questions WHERE boss = '$boss' AND question_number NOT IN (SELECT question_id FROM userinput WHERE userinput.name = '$name')";
         if ($result = $connection->query($query)) {
             if ($result->num_rows > 0) {
@@ -154,7 +159,39 @@ class frontSite
                 }
             }
         }
-        echo '<h4 class="py-2 ml-4 back"><a href="../">Click here to go back</a></h4>';
+        if ($result = $connection->query($numberofCorrect)) {
+            if ($result->num_rows > 0) {
+                $correct = $result->num_rows;
+            } else {
+                $correct = 0;
+            }
+        }
+        if ($result = $connection->query($numberofQuestions)) {
+            if ($result->num_rows > 0) {
+                $total = $result->num_rows;
+            }
+        }
+        function percentage($percentage, $of)
+        {
+            $percent = $percentage / $of;
+            return  number_format($percent * 100, 0) . '%';
+        }
+
+        if (percentage($correct, $total) == "0%") {
+            echo "<p class='noway' id='percentage'>You are dumb!</p>";
+        } elseif (percentage($correct, $total) >= "90%") {
+            echo "<p class='noway' id='percentage'>You are a god gamer!</p>";
+        } elseif (percentage($correct, $total) >= "60%") {
+            echo "<p class='noway' id='percentage'>You are an Okayeg gamer!</p>";
+        } elseif (percentage($correct, $total) >= "35%") {
+            echo "<p class='noway' id='percentage'>You are a dog tamer!</p>";
+        } elseif (percentage($correct, $total) >= "1%") {
+            echo "<p class='noway' id='percentage'>Oh hell nah!</p>";
+            echo "<p class='noway'><img src='../assets/ayoo.webp'</p>";
+        }
+        echo "<p class='ml-4 pl-4 outof'>You have <span class='red'>" . $correct . "</span> correct answers out of <span class='red'>" . $total . "</span> questions</p>";
+        echo '<h4 class="back"><a href="../">Click here to go back</a></h4>';
+        echo "<br>";
     }
     function sendAnswer()
     {
@@ -202,7 +239,7 @@ class frontSite
             if ($result->num_rows > 0) {
                 $number = $result->num_rows;
                 return $number + 1;
-            }else{
+            } else {
                 return 1; /* if there's 0 questions for specific topic return 1 so it can start adding numbers for next questions */
             }
         }
