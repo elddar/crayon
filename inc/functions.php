@@ -179,13 +179,14 @@ class frontSite
 
         if (percentage($correct, $total) == "0%") {
             echo "<p class='noway' id='percentage'>You are dumb!</p>";
-        } elseif (percentage($correct, $total) >= "90%") {
+            echo "<p class='noway'><img src='../assets/ayoo.webp'</p>";
+        } elseif (percentage($correct, $total) >= "90%" || percentage($correct, $total) == "100%") {
             echo "<p class='noway' id='percentage'>You are a god gamer!</p>";
-        } elseif (percentage($correct, $total) >= "60%") {
+        } elseif (percentage($correct, $total) >= "60%" && percentage($correct, $total) <= "89%") {
             echo "<p class='noway' id='percentage'>You are an Okayeg gamer!</p>";
-        } elseif (percentage($correct, $total) >= "35%") {
+        } elseif (percentage($correct, $total) >= "35%" && percentage($correct, $total) <= "59%") {
             echo "<p class='noway' id='percentage'>You are a dog tamer!</p>";
-        } elseif (percentage($correct, $total) >= "1%") {
+        } elseif (percentage($correct, $total) <= "34%") {
             echo "<p class='noway' id='percentage'>Oh hell nah!</p>";
             echo "<p class='noway'><img src='../assets/ayoo.webp'</p>";
         }
