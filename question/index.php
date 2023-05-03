@@ -63,7 +63,7 @@ session_start(); /* Starts the session */
     }
     ?>
     <div class="container">
-        <?php $front->sendAnswer(); ?>
+        <?php $front->sendAnswer($_GET['step'], $_GET['boss']); ?>
         <div class="question ml-sm-5 pl-sm-5 pt-2">
             <form action="" method="POST" enctype="multipart/form-data" class="col-lg-12">
                 <?php
@@ -89,9 +89,9 @@ session_start(); /* Starts the session */
                 <div class="btnnext">
                     <?php
                     if ($_GET['step'] == $front->finishQuiz($_GET['boss'])) {
-                        echo '<button name="finish" class="btn btn-success">Finish</button>';
+                        echo '<button id="control" name="finish" class="btn btn-success">Finish</button>';
                     } else {
-                        echo '<button name="next" class="btn btn-success">Next</button>';
+                        echo '<button id="control" name="next" class="btn btn-success">Next</button>';
                     }
                     ?>
                 </div>
@@ -101,6 +101,24 @@ session_start(); /* Starts the session */
 
 
 
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const step = urlParams.get('step');
+        const controlButton = document.getElementById('control');
+
+        if (step === '1' && controlButton.textContent === 'Finish') {
+            controlButton.style.display = 'none';
+
+            const soonParagraph = document.createElement('h3');
+            const soonText = document.createTextNode('Soon, YEP!');
+            soonParagraph.appendChild(soonText);
+
+            const controlContainer = controlButton.parentNode;
+            controlContainer.insertBefore(soonParagraph, controlButton.nextSibling);
+        }
+
+        console.log(controlButton.textContent)
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 </body>

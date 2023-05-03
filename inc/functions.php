@@ -52,56 +52,9 @@ class frontSite
                             echo "<br>";
                         }
                         ?>
-
-
-                        <?php
-                        /* old one in case something breaks
-                        if (($row['answer1'])) {
-                        ?>
-                            <label class="options"><?= $row['answer1'] ?>
-                                <input type="radio" name="radio" value="<?= $row['answer1'] ?>">
-                                <span class="checkmark"></span>
-                            </label>
-                        <?php
-                        }
-                        ?>
-                        <?php
-                        if (($row['answer2'])) {
-                        ?>
-                            <label class="options"><?= $row['answer2'] ?>
-                                <input type="radio" name="radio" value="<?= $row['answer2'] ?>">
-                                <span class="checkmark"></span>
-                            </label>
-                        <?php
-                        }
-                        ?>
-                        <?php
-                        if (($row['answer3'])) {
-                        ?>
-                            <label class="options"><?= $row['answer3'] ?>
-                                <input type="radio" name="radio" value="<?= $row['answer3'] ?>">
-                                <span class="checkmark"></span>
-                            </label>
-                        <?php
-                        }
-                        ?>
-                        <?php
-                        if (($row['answer4'])) {
-                        ?>
-                            <label class="options"><?= $row['answer4'] ?>
-                                <input type="radio" name="radio" value="<?= $row['answer4'] ?>">
-                                <span class="checkmark"></span>
-                            </label>
-                        <?php
-                        }
-                        */
-                        ?>
                     </div>
                 <?php
                 }
-            }else{
-                echo "<h3 class='ml-4 pl-5'>No questions, soon. YEP</h3>";
-                die();
             }
         }
     }
@@ -153,8 +106,8 @@ class frontSite
                 echo "<p class='border-bottom p-2 bozo'><b>You didn't answer these questions, BOZO!</b><br><span class='ml-4'>Click on them!</span></p>";
                 while ($row = $result->fetch_array()) {
                 ?>
-                    <a class="results" href="../question/?step=<?=$row['question_number'] ?>&boss=<?=$row['boss'] ?>">
-                        <div onclick="location.href='../question/?step=<?=$row['question_number'] ?>&boss=<?=$row['boss'] ?>';" class="quest">
+                    <a class="results" href="../question/?step=<?= $row['question_number'] ?>&boss=<?= $row['boss'] ?>">
+                        <div onclick="location.href='../question/?step=<?= $row['question_number'] ?>&boss=<?= $row['boss'] ?>';" class="quest">
                             <p class="small">Q: <?= $row['question'] ?>
                         </div>
                     </a>
@@ -166,14 +119,12 @@ class frontSite
             if ($result->num_rows > 0) {
                 $correct = $result->num_rows;
             } else {
-                return 0;
+                $correct = 0;
             }
         }
         if ($result = $connection->query($numberofQuestions)) {
             if ($result->num_rows > 0) {
                 $total = $result->num_rows;
-            }else{
-                return 0;
             }
         }
         function percentage($percentage, $of)
@@ -199,7 +150,7 @@ class frontSite
         echo '<h4 class="back"><a href="../">Click here to go back</a></h4>';
         echo "<br>";
     }
-    function sendAnswer()
+    function sendAnswer($id, $boss)
     {
         if (isset($_POST['next'])) {
             if (isset($_POST['radio'])) {
@@ -216,7 +167,7 @@ class frontSite
 
                     if ($connection->query($q) === TRUE) {
                         echo "<h4 class='text-center border-bottom'><img src='../assets/noted.webp' alt='Noted'></h4>";
-                        header("Refresh: 1; ?step=" . ((int)$_GET['step'] + 1) . "&boss=" . $_GET['boss']);
+                        header("Refresh: 1; ?boss=" . $_GET['boss'] . "&step=" . ((int)$_GET['step'] + 1));
                         //header("Location: " . $_SERVER['REQUEST_URI'] . "&step=1");
                         exit();
                     } else {

@@ -36,7 +36,7 @@ session_start(); /* Starts the session */
     <script>
         window.addEventListener('load', function() {
             var percentage = document.getElementById('percentage');
-            if (percentage.textContent === 'Oh hell nah!') {
+            if (percentage.textContent === 'Oh hell nah!' || percentage.textContent === 'You are dumb!') {
                 var audio = new Audio('../assets/ohhellnah.ogg');
                 audio.play();
             }
