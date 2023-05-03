@@ -64,7 +64,7 @@ session_start(); /* Starts the session */
     ?>
     <div class="container">
         <?php $front->sendAnswer($_GET['step'], $_GET['boss']); ?>
-        <div class="question ml-sm-5 pl-sm-5 pt-2">
+        <div class="question ml-sm-5 pl-sm-5 pt-2" id="main">
             <form action="" method="POST" enctype="multipart/form-data" class="col-lg-12">
                 <?php
                 /*
@@ -107,13 +107,13 @@ session_start(); /* Starts the session */
         const controlButton = document.getElementById('control');
 
         if (step === '1' && controlButton.textContent === 'Finish') {
-            controlButton.style.display = 'none';
+            controlButton.remove();
 
             const soonParagraph = document.createElement('h3');
-            const soonText = document.createTextNode('Soon, YEP!');
+            const soonText = document.createTextNode('Soon, YEP');
             soonParagraph.appendChild(soonText);
 
-            const controlContainer = controlButton.parentNode;
+            const controlContainer = document.getElementById('main');
             controlContainer.insertBefore(soonParagraph, controlButton.nextSibling);
         }
 
