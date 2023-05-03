@@ -10,14 +10,14 @@ class frontSite
         {
             require 'connect.php';
 
-            $boss = basename(getcwd());
+            $boss = $_GET['boss'];
             $user = $_SESSION['character'];
             $id = $_GET['step'];
             $query = "SELECT * FROM questions, userinput WHERE questions.question_number = '$id' AND questions.boss = '$boss' AND userinput.boss = questions.boss AND userinput.question_id = questions.question_number AND userinput.name = '$user'";
             if ($result = $connection->query($query)) {
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_array()) {
-                        header("Location: ../result/?player=" . $_SESSION['character'] . "&boss=" . basename(getcwd()));
+                        header("Location: ../result/?player=" . $_SESSION['character'] . "&boss=" . $boss);
                         die();
                     }
                 }
@@ -99,6 +99,9 @@ class frontSite
                     </div>
                 <?php
                 }
+            }else{
+                echo "<h3 class='ml-4 pl-5'>No questions, soon. YEP</h3>";
+                die();
             }
         }
     }
@@ -150,8 +153,8 @@ class frontSite
                 echo "<p class='border-bottom p-2 bozo'><b>You didn't answer these questions, BOZO!</b><br><span class='ml-4'>Click on them!</span></p>";
                 while ($row = $result->fetch_array()) {
                 ?>
-                    <a class="results" href="../<?= $_GET['boss'] ?>?step=<?= $row['question_number'] ?>">
-                        <div onclick="location.href='../<?= $_GET['boss'] ?>?step=<?= $row['question_number'] ?>';" class="quest">
+                    <a class="results" href="../question/?step=<?=$row['question_number'] ?>&boss=<?=$row['boss'] ?>">
+                        <div onclick="location.href='../question/?step=<?=$row['question_number'] ?>&boss=<?=$row['boss'] ?>';" class="quest">
                             <p class="small">Q: <?= $row['question'] ?>
                         </div>
                     </a>
@@ -163,12 +166,14 @@ class frontSite
             if ($result->num_rows > 0) {
                 $correct = $result->num_rows;
             } else {
-                $correct = 0;
+                return 0;
             }
         }
         if ($result = $connection->query($numberofQuestions)) {
             if ($result->num_rows > 0) {
                 $total = $result->num_rows;
+            }else{
+                return 0;
             }
         }
         function percentage($percentage, $of)
@@ -211,7 +216,8 @@ class frontSite
 
                     if ($connection->query($q) === TRUE) {
                         echo "<h4 class='text-center border-bottom'><img src='../assets/noted.webp' alt='Noted'></h4>";
-                        header("Refresh: 1; ?step=" . ((int)$_GET['step'] + 1));
+                        header("Refresh: 1; ?step=" . ((int)$_GET['step'] + 1) . "&boss=" . $_GET['boss']);
+                        //header("Location: " . $_SERVER['REQUEST_URI'] . "&step=1");
                         exit();
                     } else {
                         echo "Error" . $q . "<br>" . $connection->error;
@@ -226,7 +232,7 @@ class frontSite
         }
         if (isset($_POST['finish'])) {
             echo "<h4 class='text-center border-bottom'><img src='../assets/thinkge.webp' alt='Thinking'><br>Preparing results!</h4>";
-            header("Refresh: 2.5; ../result/?player=" . $_SESSION['character'] . "&boss=" . basename(getcwd()));
+            header("Refresh: 2.5; ../result/?player=" . $_SESSION['character'] . "&boss=" . $_GET['boss']);
             die();
         }
     }
