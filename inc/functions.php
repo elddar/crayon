@@ -106,8 +106,8 @@ class frontSite
                 echo "<p class='border-bottom p-2 bozo'><b>You didn't answer these questions, BOZO!</b><br><span class='ml-4'>Click on them!</span></p>";
                 while ($row = $result->fetch_array()) {
                 ?>
-                    <a class="results" href="../question/?step=<?= $row['question_number'] ?>&boss=<?= $row['boss'] ?>">
-                        <div onclick="location.href='../question/?step=<?= $row['question_number'] ?>&boss=<?= $row['boss'] ?>';" class="quest">
+                    <a class="results" href="../question/?boss=<?= $row['boss'] ?>&step=<?= $row['question_number'] ?>">
+                        <div onclick="location.href='../question/?boss=<?= $row['boss'] ?>&step=<?= $row['question_number'] ?>';" class="quest">
                             <p class="small">Q: <?= $row['question'] ?>
                         </div>
                     </a>
