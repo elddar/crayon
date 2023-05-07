@@ -22,6 +22,23 @@ session_start();
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <title>Crayon Factory</title>
 
+    <script>
+        window.onload = function move() {
+            var elem = document.getElementById("myBar");
+            var width = 1;
+            var id = setInterval(frame, 14);
+
+            function frame() {
+                if (width >= 100) {
+                    clearInterval(id);
+                } else {
+                    width++;
+                    elem.style.width = width + '%';
+                }
+            }
+        }
+    </script>
+
     <style>
         body {
             background-color: #333;
@@ -67,12 +84,29 @@ session_start();
             text-align: center;
         }
 
-        .inactive{
+        .inactive {
             filter: opacity(20%);
         }
 
-        .active:hover{
+        .active:hover {
             filter: brightness(140%);
+        }
+
+        #myBar{
+            margin-top: -9px;
+        }
+        .w3-green,
+        .w3-hover-green:hover {
+            color: #fff !important;
+            background-color: red !important
+        }
+
+        .w3-light-grey,
+        .w3-hover-light-grey:hover,
+        .w3-light-gray,
+        .w3-hover-light-gray:hover {
+            color: #000 !important;
+            background-color: #f1f1f1 !important
         }
     </style>
 </head>
@@ -87,9 +121,9 @@ session_start();
                     <form method="post" action="" class="card-body cardbody-color p-lg-5">
                         <div class="text-center">
                             <?php
-                            if(isset($_SESSION['character'])){
+                            if (isset($_SESSION['character'])) {
                                 echo '<a href="de.php"><img src="assets/pepem.png" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3" width="200px" alt="profile"></a>';
-                            }else{
+                            } else {
                                 echo '<img src="assets/pepem.png" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3" width="200px" alt="profile">';
                             }
                             ?>
@@ -104,9 +138,18 @@ session_start();
                             if (!isset($_SESSION['character'])) {
                                 echo '<label for="session_name">Character name:</label>
                                 <input type="text" class="form-control" id="session_name" name="session_name">';
-                                echo '<br><div class="text-center"><button type="submit" class="btn btn-color px-5 mb-5 w-100">Okayeg</button></div>';
+                                echo '<br><div class="text-center"><button type="submit" name="okayeg" class="btn btn-color px-5 mb-5 w-100">Okayeg</button></div>';
                             } else {
                                 echo "<div class='welcome'>Yo, " . $_SESSION['character'] . "</div>";
+                            }
+                            if (isset($_POST['okayeg'])) {
+                                header("Refresh: 1.5; .");
+                                echo "<h4 class='text-center border-bottom'><img src='assets/lookdown.webp' alt='Checking'></h4>";
+                                echo '<div class="w3-light-grey">
+                        <div id="myBar" class="w3-green" style="height:6px;width:0"></div>
+                      </div>
+                      <br>';
+                                die();
                             }
                             ?>
                         </div>
@@ -121,28 +164,28 @@ session_start();
                             <img data-toggle="tooltip" data-placement="top" title="KAZZARA, THE HELLFORGED" src="assets/kazzara.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss active" width="200px" alt="profile">
                         </a>
                         <a href="question/?boss=amalgamation" class="p-1">
-                            <img data-toggle="tooltip" data-placement="top" title="THE AMALGAMATION CHAMBER" src="assets/theamalgamationchamber.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss inactive" width="200px" alt="profile">
+                            <img data-toggle="tooltip" data-placement="top" title="THE AMALGAMATION CHAMBER" src="assets/theamalgamationchamber.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss" width="200px" alt="profile">
                         </a>
                         <a href="question/?boss=experiments" class="p-1">
-                            <img data-toggle="tooltip" data-placement="top" title="THE FORGOTTEN EXPERIMENTS" src="assets/theforgottenexperiments.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss inactive" width="200px" alt="profile">
+                            <img data-toggle="tooltip" data-placement="top" title="THE FORGOTTEN EXPERIMENTS" src="assets/theforgottenexperiments.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss active" width="200px" alt="profile">
                         </a>
                         <a href="question/?boss=assault" class="p-1">
-                            <img data-toggle="tooltip" data-placement="top" title="ASSAULT OF THE ZAQALI" src="assets/assaultofthezaqali.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss inactive" width="200px" alt="profile">
+                            <img data-toggle="tooltip" data-placement="top" title="ASSAULT OF THE ZAQALI" src="assets/assaultofthezaqali.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss active" width="200px" alt="profile">
                         </a>
                         <a href="question/?boss=rashok" class="p-1">
-                            <img data-toggle="tooltip" data-placement="top" title="RASHOK, THE ELDER" src="assets/rashoktheelder.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss inactive" width="200px" alt="profile">
+                            <img data-toggle="tooltip" data-placement="top" title="RASHOK, THE ELDER" src="assets/rashoktheelder.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss active" width="200px" alt="profile">
                         </a>
                         <a href="question/?boss=zskarn" class="p-1">
-                            <img data-toggle="tooltip" data-placement="top" title="THE VIGILANT STEWARD, ZSKARN" src="assets/thevigilantstewardzskarn.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss inactive" width="200px" alt="profile">
+                            <img data-toggle="tooltip" data-placement="top" title="THE VIGILANT STEWARD, ZSKARN" src="assets/thevigilantstewardzskarn.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss active" width="200px" alt="profile">
                         </a>
                         <a href="question/?boss=magmorax" class="p-1">
-                            <img data-toggle="tooltip" data-placement="top" title="MAGMORAX" src="assets/magmorax.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss inactive" width="200px" alt="profile">
+                            <img data-toggle="tooltip" data-placement="top" title="MAGMORAX" src="assets/magmorax.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss active" width="200px" alt="profile">
                         </a>
                         <a href="question/?boss=neltharion" class="p-1">
-                            <img data-toggle="tooltip" data-placement="top" title="ECHO OF NELTHARION" src="assets/echoofneltharion.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss inactive" width="200px" alt="profile">
+                            <img data-toggle="tooltip" data-placement="top" title="ECHO OF NELTHARION" src="assets/echoofneltharion.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss active" width="200px" alt="profile">
                         </a>
                         <a href="question/?boss=sarkareth" class="p-1">
-                            <img data-toggle="tooltip" data-placement="top" title="SCALECOMMANDER SARKARETH" src="assets/scalecommandersarkareth.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss inactive" width="200px" alt="profile">
+                            <img data-toggle="tooltip" data-placement="top" title="SCALECOMMANDER SARKARETH" src="assets/scalecommandersarkareth.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss active" width="200px" alt="profile">
                         </a>
                     </div>
                 </div>

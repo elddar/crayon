@@ -138,6 +138,7 @@ class frontSite
             echo "<p class='noway'><img src='../assets/ayoo.webp'</p>";
         } elseif (percentage($correct, $total) >= "90%" || percentage($correct, $total) == "100%") {
             echo "<p class='noway' id='percentage'>You are a god gamer!</p>";
+            echo "<p class='noway'><img src='../assets/clap.webp'</p>";
         } elseif (percentage($correct, $total) >= "60%" && percentage($correct, $total) <= "89%") {
             echo "<p class='noway' id='percentage'>You are an Okayeg gamer!</p>";
         } elseif (percentage($correct, $total) >= "35%" && percentage($correct, $total) <= "59%") {

@@ -41,6 +41,13 @@ session_start(); /* Starts the session */
                 audio.play();
             }
         });
+        window.addEventListener('load', function() {
+            var percentage = document.getElementById('percentage');
+            if (percentage.textContent === 'You are a god gamer!' || percentage.textContent === 'You are dumb!') {
+                var audio = new Audio('../assets/smart.ogg');
+                audio.play();
+            }
+        });
     </script>
 </head>
 

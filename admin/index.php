@@ -126,6 +126,7 @@ $secretstuff = "Edo";
                     <div class="col-md-12">
                         <div class="row justify-content-center">
                             <div class="col-lg-12">
+                                <button type="button" id="item" class="btn btn-primary btn-block">Add item</button>
                                 <?php $front->makeQuestion(); ?>
                                 <form action="" method="POST">
                                     <div class="form-group">
@@ -164,31 +165,49 @@ $secretstuff = "Edo";
                     <div class="col-lg-12">
                         <div class="row justify-content-center">
                             <a href="?boss=kazzara" class="p-1">
-                                <img data-toggle="tooltip" data-placement="top" title="KAZZARA, THE HELLFORGED" src="../assets/kazzara.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle boss <?php if($_GET['boss'] != 'kazzara'){echo "inactive";} ?>" width="200px" alt="profile">
+                                <img data-toggle="tooltip" data-placement="top" title="KAZZARA, THE HELLFORGED" src="../assets/kazzara.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle boss <?php if ($_GET['boss'] != 'kazzara') {
+                                                                                                                                                                                                                        echo "inactive";
+                                                                                                                                                                                                                    } ?>" width="200px" alt="profile">
                             </a>
                             <a href="?boss=amalgamation" class="p-1">
-                                <img data-toggle="tooltip" data-placement="top" title="THE AMALGAMATION CHAMBER" src="../assets/theamalgamationchamber.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle boss <?php if($_GET['boss'] != 'amalgamation'){echo "inactive";} ?>" width="200px" alt="profile">
+                                <img data-toggle="tooltip" data-placement="top" title="THE AMALGAMATION CHAMBER" src="../assets/theamalgamationchamber.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle boss <?php if ($_GET['boss'] != 'amalgamation') {
+                                                                                                                                                                                                                                        echo "inactive";
+                                                                                                                                                                                                                                    } ?>" width="200px" alt="profile">
                             </a>
                             <a href="?boss=experiments" class="p-1">
-                                <img data-toggle="tooltip" data-placement="top" title="THE FORGOTTEN EXPERIMENTS" src="../assets/theforgottenexperiments.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle boss <?php if($_GET['boss'] != 'experiments'){echo "inactive";} ?>" width="200px" alt="profile">
+                                <img data-toggle="tooltip" data-placement="top" title="THE FORGOTTEN EXPERIMENTS" src="../assets/theforgottenexperiments.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle boss <?php if ($_GET['boss'] != 'experiments') {
+                                                                                                                                                                                                                                        echo "inactive";
+                                                                                                                                                                                                                                    } ?>" width="200px" alt="profile">
                             </a>
                             <a href="?boss=assault" class="p-1">
-                                <img data-toggle="tooltip" data-placement="top" title="ASSAULT OF THE ZAQALI" src="../assets/assaultofthezaqali.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle boss <?php if($_GET['boss'] != 'assault'){echo "inactive";} ?>" width="200px" alt="profile">
+                                <img data-toggle="tooltip" data-placement="top" title="ASSAULT OF THE ZAQALI" src="../assets/assaultofthezaqali.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle boss <?php if ($_GET['boss'] != 'assault') {
+                                                                                                                                                                                                                                echo "inactive";
+                                                                                                                                                                                                                            } ?>" width="200px" alt="profile">
                             </a>
                             <a href="?boss=rashok" class="p-1">
-                                <img data-toggle="tooltip" data-placement="top" title="RASHOK, THE ELDER" src="../assets/rashoktheelder.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle boss <?php if($_GET['boss'] != 'rashok'){echo "inactive";} ?>" width="200px" alt="profile">
+                                <img data-toggle="tooltip" data-placement="top" title="RASHOK, THE ELDER" src="../assets/rashoktheelder.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle boss <?php if ($_GET['boss'] != 'rashok') {
+                                                                                                                                                                                                                        echo "inactive";
+                                                                                                                                                                                                                    } ?>" width="200px" alt="profile">
                             </a>
                             <a href="?boss=zskarn" class="p-1">
-                                <img data-toggle="tooltip" data-placement="top" title="THE VIGILANT STEWARD, ZSKARN" src="../assets/thevigilantstewardzskarn.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle boss <?php if($_GET['boss'] != 'zskarn'){echo "inactive";} ?>" width="200px" alt="profile">
+                                <img data-toggle="tooltip" data-placement="top" title="THE VIGILANT STEWARD, ZSKARN" src="../assets/thevigilantstewardzskarn.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle boss <?php if ($_GET['boss'] != 'zskarn') {
+                                                                                                                                                                                                                                            echo "inactive";
+                                                                                                                                                                                                                                        } ?>" width="200px" alt="profile">
                             </a>
                             <a href="?boss=magmorax" class="p-1">
-                                <img data-toggle="tooltip" data-placement="top" title="MAGMORAX" src="../assets/magmorax.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle boss <?php if($_GET['boss'] != 'magmorax'){echo "inactive";} ?>" width="200px" alt="profile">
+                                <img data-toggle="tooltip" data-placement="top" title="MAGMORAX" src="../assets/magmorax.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle boss <?php if ($_GET['boss'] != 'magmorax') {
+                                                                                                                                                                                                        echo "inactive";
+                                                                                                                                                                                                    } ?>" width="200px" alt="profile">
                             </a>
                             <a href="?boss=neltharion" class="p-1">
-                                <img data-toggle="tooltip" data-placement="top" title="ECHO OF NELTHARION" src="../assets/echoofneltharion.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle boss <?php if($_GET['boss'] != 'neltharion'){echo "inactive";} ?>" width="200px" alt="profile">
+                                <img data-toggle="tooltip" data-placement="top" title="ECHO OF NELTHARION" src="../assets/echoofneltharion.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle boss <?php if ($_GET['boss'] != 'neltharion') {
+                                                                                                                                                                                                                            echo "inactive";
+                                                                                                                                                                                                                        } ?>" width="200px" alt="profile">
                             </a>
                             <a href="?boss=sarkareth" class="p-1">
-                                <img data-toggle="tooltip" data-placement="top" title="SCALECOMMANDER SARKARETH" src="../assets/scalecommandersarkareth.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle boss <?php if($_GET['boss'] != 'sarkareth'){echo "inactive";} ?>" width="200px" alt="profile">
+                                <img data-toggle="tooltip" data-placement="top" title="SCALECOMMANDER SARKARETH" src="../assets/scalecommandersarkareth.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle boss <?php if ($_GET['boss'] != 'sarkareth') {
+                                                                                                                                                                                                                                        echo "inactive";
+                                                                                                                                                                                                                                    } ?>" width="200px" alt="profile">
                             </a>
                         </div>
                     </div>
@@ -205,6 +224,16 @@ $secretstuff = "Edo";
         $(function() {
             $('[data-toggle="tooltip"]').tooltip()
         })
+    </script>
+    <script>
+        const itemBtn = document.getElementById("item"); // get the button element
+        const questionInput = document.getElementById("question"); // get the input element
+
+        itemBtn.addEventListener("click", () => {
+            const link = document.createElement("a"); // create an anchor element
+            link.href = "https://www.wowhead.com/ptr/spell=401809/corrupting-shadow"; // set the href attribute
+            questionInput.value += link.outerHTML; // append the HTML for the anchor element to the current value of the input
+        });
     </script>
     <script>
         // Get all the input elements with class "answer"
