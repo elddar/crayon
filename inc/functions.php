@@ -42,7 +42,7 @@ class frontSite
                                 // if the current column is one of the answer columns, display its value
                                 if (($key == 'answer1' || $key == 'answer2' || $key == 'answer3' || $key == 'answer4') && (!isset($value) || $value !== '')) {
                         ?>
-                                    <label class="options"><?= $value ?>
+                                    <label class="options"><?php echo $value ?>
                                         <input type="radio" name="radio" value="<?= $value ?>">
                                         <span class="checkmark"></span>
                                     </label>

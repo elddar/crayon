@@ -1,6 +1,6 @@
 <?php
-// Start the session on every page at the top first
-session_start();
+ob_start();
+session_start(); /* Starts the session */
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,7 +26,7 @@ session_start();
         window.onload = function move() {
             var elem = document.getElementById("myBar");
             var width = 1;
-            var id = setInterval(frame, 14);
+            var id = setInterval(frame, 10);
 
             function frame() {
                 if (width >= 100) {
@@ -143,7 +143,7 @@ session_start();
                                 echo "<div class='welcome'>Yo, " . $_SESSION['character'] . "</div>";
                             }
                             if (isset($_POST['okayeg'])) {
-                                header("Refresh: 1.5; .");
+                                header("Refresh: 1; .");
                                 echo "<h4 class='text-center border-bottom'><img src='assets/lookdown.webp' alt='Checking'></h4>";
                                 echo '<div class="w3-light-grey">
                         <div id="myBar" class="w3-green" style="height:6px;width:0"></div>
@@ -164,7 +164,7 @@ session_start();
                             <img data-toggle="tooltip" data-placement="top" title="KAZZARA, THE HELLFORGED" src="assets/kazzara.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss active" width="200px" alt="profile">
                         </a>
                         <a href="question/?boss=amalgamation" class="p-1">
-                            <img data-toggle="tooltip" data-placement="top" title="THE AMALGAMATION CHAMBER" src="assets/theamalgamationchamber.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss" width="200px" alt="profile">
+                            <img data-toggle="tooltip" data-placement="top" title="THE AMALGAMATION CHAMBER" src="assets/theamalgamationchamber.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss active" width="200px" alt="profile">
                         </a>
                         <a href="question/?boss=experiments" class="p-1">
                             <img data-toggle="tooltip" data-placement="top" title="THE FORGOTTEN EXPERIMENTS" src="assets/theforgottenexperiments.webp" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3 boss active" width="200px" alt="profile">
